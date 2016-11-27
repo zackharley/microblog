@@ -45,10 +45,10 @@ $ export NODE_ENV=production
 ## The Build Process
 
 When building, these are the following steps that occur
-- The source code is linted using ESLint
+- The source code is linted using TSLint
 - Whatever is currently in the `dist` folder is removed and the `dist` folder is recreated
 - All of the server files are copied to `dist`
-- The client-side files are transpiled and bundled using Babel and Webpack
+- The client-side files are transpiled and bundled using TS Loader and Webpack
 - The SCSS code is transpiled and added to `dist`
 - The server is executed
 
