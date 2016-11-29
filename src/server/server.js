@@ -3,6 +3,7 @@ const path = require('path');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const cors = require('./controllers/cors');
+const db = require('./db');
 
 const app = express();
 const port = process.env.PORT || 8000;

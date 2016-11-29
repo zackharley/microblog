@@ -8,5 +8,4 @@ router.post('/post/add', postAddController);
 
 router.delete('/post/delete', postDeleteController);
 
-
 module.exports = router;

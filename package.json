@@ -23,6 +23,7 @@
     "@angular/common": "^2.2.3",
     "@angular/compiler": "^2.2.3",
     "@angular/core": "^2.2.3",
+    "@angular/forms": "^2.2.3",
     "@angular/http": "^2.2.3",
     "@angular/platform-browser": "^2.2.3",
     "@angular/platform-browser-dynamic": "^2.2.3",
@@ -39,7 +40,7 @@
     "zone.js": "^0.7.2"
   },
   "devDependencies": {
-    "@types/node": "^6.0.51",
+    "@types/node": "^0.0.0",
     "morgan": "^1.7.0",
     "node-sass": "^3.13.0",
     "ts-loader": "^1.2.2",
