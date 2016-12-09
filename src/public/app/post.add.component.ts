@@ -1,5 +1,6 @@
-import {Component} from '@angular/core';
+import {Component, Output, EventEmitter, Directive} from '@angular/core';
 import {PostAddService} from './post.add.service';
+import {FileUploader} from 'ng2-file-upload/ng2-file-upload';
 
 @Component({
 	selector: 'post-add',
@@ -15,7 +16,11 @@ import {PostAddService} from './post.add.service';
 		  	<footer class='post-add-footer'>
 		    	<button class='post-add-btn post-add-btn-close' (click)='close()'>Close</button>
 		    	<p class='post-add-char-count'>{{characterCount}}/160</p>
-    			<button class='post-add-btn post-add-btn-post'(click)='addPost()'>Post</button>
+		    	<div class='fileUpload post-add-btn post-add-btn-img'>
+				    <i class='fa fa-upload' aria-hidden='true' accept='image/gif, image/jpeg, image/png'></i>
+				    <input id='post-add-upload' type='file' name='photo' class='post-add-upload' ng2FileSelect [uploader]='uploader' />
+				</div>
+    			<button class='post-add-btn post-add-btn-post' (click)='addPost()'>Post</button>
     		</footer>
 		</section>
 	`,
@@ -23,10 +28,16 @@ import {PostAddService} from './post.add.service';
 })
 export class PostAddComponent {
 
+	@Output() onClosedPostMenu = new EventEmitter<boolean>();
+	@Output() onPostAdded = new EventEmitter<boolean>();
+	@Directive({ selector: '[ng2FileSelect]' });
+
 	name;
 	postTitle: string;
 	postBody: string;
 	characterCount: number;
+
+	public uploader: FileUploader = new FileUploader({url : '/post/add'});
 
 	constructor(private postAddService: PostAddService) {
 		this.name = 'Zack';
@@ -34,13 +45,17 @@ export class PostAddComponent {
 	}
 
 	close() {
-		console.log('closing overlay');
+		let isOverlayHidden = true;
+		this.onClosedPostMenu.emit(isOverlayHidden);
 	}
 
 	addPost() {
-		this.postAddService.addPost(this.postTitle, this.postBody)
+		const image = document.getElementById('post-add-upload').files[0];
+		this.postAddService.addPost(this.postTitle, this.postBody, image)
 			.subscribe(response => {
 				console.log(response);
+				this.close();
+				this.onPostAdded.emit(true);
 			});
 	}
 

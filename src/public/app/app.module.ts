@@ -9,6 +9,8 @@ import {PostsComponent} from './posts.component';
 import {PostComponent} from './post.component';
 import {PostAddComponent} from './post.add.component';
 
+import {FileSelectDirective} from 'ng2-file-upload';
+
 @NgModule({
 	imports: [
 		BrowserModule,
@@ -20,7 +22,8 @@ import {PostAddComponent} from './post.add.component';
 		HeaderComponent,
 		PostsComponent,
 		PostComponent,
-		PostAddComponent
+		PostAddComponent,
+		FileSelectDirective
 	],
 	bootstrap: [AppComponent]
 })

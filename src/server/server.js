@@ -16,6 +16,9 @@ app.use(morgan('combined'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+/**
+ * Import and use all of the routes for the project
+ */
 const routes = require('./routes');
 app.use(routes.index);
 app.use(routes.post);

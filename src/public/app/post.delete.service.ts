@@ -5,8 +5,8 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class PostDeleteService {
-	private host = process.env.API_HOST || 'localhost';
-	private port = process.env.API_PORT || '8000'
+	private host = process.env.HOST || 'localhost';
+	private port = process.env.PORT || '8000'
 	private endpoint = process.env.API_POST_DELETE_ENDPOINT || 'post/delete';
 	private postDeleteUrl = `http://${this.host}${this.port ? `:${this.port}` : ''}/${this.endpoint}`;
 	private postDeleteOptions = new RequestOptions({

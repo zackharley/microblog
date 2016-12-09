@@ -1,14 +1,31 @@
-import {Component} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 
 @Component({
 	selector: 'blog-header',
 	template: `
 		<h1 class='header-title'>&micro;blog</h1>
 		<section class='user-wrapper'>
-			<a class='user-signup' href='#'>Sign up</a>
-			<a class='user-login'href='#'>Login</a>
-			<button class='user-add-post'><i class="fa fa-pencil" aria-hidden="true"></i></button>
+			<button class='header-btn user-signup' (click)='signIn()'>Sign up</button>
+			<button class='header-btn user-login' (click)='logIn()'>Login</button>
+			<button class='header-btn user-add-post' (click)='openPostMenu()'><i class="fa fa-pencil" aria-hidden="true"></i></button>
 		</section>
 	`
 })
-export class HeaderComponent { }
+export class HeaderComponent {
+
+	@Output() onOpenedPostMenu = new EventEmitter<boolean>();
+
+	signIn() {
+
+	}
+
+	logIn() {
+
+	}
+
+	openPostMenu() {
+		let isPostOverlayHidden = false;
+		this.onOpenedPostMenu.emit(isPostOverlayHidden);
+	}
+
+}

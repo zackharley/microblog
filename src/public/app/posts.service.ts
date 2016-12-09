@@ -5,8 +5,8 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class PostsService {
-	private host = process.env.API_HOST || 'localhost';
-	private port = process.env.API_PORT || '8000'
+	private host = process.env.HOST || 'localhost';
+	private port = process.env.PORT || '8000'
 	private endpoint = process.env.API_POSTS_ENDPOINT || 'posts';
 	private postsUrl = `http://${this.host}${this.port ? `:${this.port}` : ''}/${this.endpoint}`;
 

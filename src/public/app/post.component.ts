@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, Output, EventEmitter} from '@angular/core';
 import {PostDeleteService} from './post.delete.service';
 
 @Component({
@@ -18,6 +18,7 @@ import {PostDeleteService} from './post.delete.service';
 	providers: [PostDeleteService]
 })
 export class PostComponent {
+	@Output() onPostDeleted = new EventEmitter<boolean>();
 	@Input() post;
 
 	constructor(private postDeleteService: PostDeleteService) {
@@ -27,6 +28,7 @@ export class PostComponent {
 	deletePost(_id) {
 		this.postDeleteService.deletePost(_id)
 			.subscribe(response => {
+				this.onPostDeleted.emit(true);
 				console.log(response);
 			});
 	}

@@ -39,20 +39,7 @@ body {
 	font-weight: 600;
 }
 
-.user-wrapper {
-	margin-left: auto;
-}
-
-.user-signup {
-
-}
-
-.user-login {
-
-}
-
-.user-add-post {
-	background-color: #529ECC;
+.header-btn {
     border: none;
     border-radius: 2px;
     color: white;
@@ -61,6 +48,24 @@ body {
     font-weight: 600;
     margin: 16px 0px;
     padding: 5px 7px;
+}
+
+.user-wrapper {
+	margin-left: auto;
+}
+
+.user-signup {
+	background-color: $blue;
+    width: 60px;
+}
+
+.user-login {
+	background-color: $blue;
+    width: 60px;
+}
+
+.user-add-post {
+	background-color: $blue;
     width: 45px;
 }
 
@@ -227,6 +232,30 @@ body {
 	font-family: Hind, sans-serif;
     font-weight: 600;
     margin: 22px 10px 0px auto;
+}
+
+.post-add-btn-img {
+    align-items: center;
+	background-color: rgba(63,63,63,0.5);
+	display: flex;
+	font-size: 12px;
+    justify-content: center;
+    margin: 20px 10px;
+    overflow: hidden;
+    padding: 0px;
+	position: relative;
+}
+
+.post-add-upload {
+    cursor: pointer;
+    margin: 0;
+    filter: alpha(opacity=0);
+    font-size: 20px;
+    opacity: 0;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
 }
 
 .post-add-btn-post {
