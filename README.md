@@ -18,13 +18,14 @@ To install the dependencies for the project
 $ yarn install
 ```
 
-
-Once the dependencies are installed, you have to export the credentials for the MongoDB instance:
+Once the dependencies are installed, you have to replace the credentials for the MongoDB instance in `src/server/config/db.config.js`:
 ```
-export MONGO_HOST='http://example.com/db'
-export MONGO_USERNAME='root'
-export MONGO_PASSWORD='password'
-export MONGO_DATABASE='admin'
+{
+	host: 'http://example.com/db',
+	username: 'root',
+	password: 'password',
+	database: 'admin'
+}
 ```
 
 You also have to add a Google client id to `src/public/config/auth.config.js` and a Google client secret to `src/server/config/auth.config.js` in place of `<replace>`.
