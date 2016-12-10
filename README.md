@@ -12,7 +12,6 @@ You will also need the [Yarn](https://yarnpkg.com/) package manager installed:
 $ npm i -g yarn
 ```
 
-
 To install the dependencies for the project
 
 ```
@@ -20,7 +19,17 @@ $ yarn install
 ```
 
 
-Once the dependencies are installed, you can build and start the Express server by running
+Once the dependencies are installed, you have to export the credentials for the MongoDB instance:
+```
+export MONGO_HOST='http://example.com/db'
+export MONGO_USERNAME='root'
+export MONGO_PASSWORD='password'
+export MONGO_DATABASE='admin'
+```
+
+You also have to add a Google client id to `src/public/config/auth.config.js` and a Google client secret to `src/server/config/auth.config.js` in place of `<replace>`.
+
+You can build and start the Express server by running
 
 ```
 $ npm start
@@ -30,16 +39,10 @@ This uses the files built into the `dist` folder.
 
 ## More help
 
-To use a port besides the default `3000`, use an environment variable
+To use a port besides the default `8000`, use an environment variable
 
 ```
 $ export PORT=8080
-```
-
-To specify the environment you want to run the server in (the default is 'development', use an environment variable
-
-```
-$ export NODE_ENV=production
 ```
 
 ## The Build Process
