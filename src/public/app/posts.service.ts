@@ -23,7 +23,6 @@ export class PostsService {
 		return res.json().map((post) => {
 			let postDate = new Date(post.date);
 			post.date = `${monthNames[postDate.getMonth()]} ${postDate.getDate()}, ${postDate.getFullYear()}`;
-			post.image = 'https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/SWRREC0K3A.jpg';
 			return post;
 		});
 	}

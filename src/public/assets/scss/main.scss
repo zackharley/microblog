@@ -64,6 +64,11 @@ body {
     width: 60px;
 }
 
+.user-logout {
+	background-color: $red;
+	width: 60px;
+}
+
 .user-add-post {
 	background-color: $blue;
     width: 45px;
@@ -91,6 +96,7 @@ body {
 .post-header {
 	display: flex;
 	flex-direction: row;
+	height: 36px;
 }
 
 .post-delete {
@@ -104,12 +110,13 @@ body {
 	display: block;
 	max-width: 500px;
     max-height: 500px;
+    min-width: 500px;
 	width: auto;
 	height: auto;
 }
 
 .post-content {
-	padding: 40px;
+	padding: 40px 40px 0px 40px;
 }
 
 .post-date {
@@ -134,7 +141,18 @@ body {
 	padding-bottom: 20px;
 }
 
-.post-author {
+.post-footer {
+	display: flex;
+    flex-direction: row;
+    padding: 0px 40px 40px 40px;
+}
+
+.post-author-photo {
+	border-radius: 20px;
+    margin-right: 20px;
+}
+
+.post-author-name {
 	color: $grey;
 	font-family: 'Hind', sans-serif;
 	font-weight: 600;

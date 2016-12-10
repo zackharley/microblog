@@ -8,21 +8,29 @@ import {PostsService} from './posts.service';
 			<post-add
 				(onClosedPostMenu)='setIsOverlayHidden($event)'
 				(onPostAdded)='getPosts()'
+				[credentials]='credentials'
 				[ngClass]='{"hidden": isOverlayHidden, "post-add-overlay": true}'
 			></post-add>
-			<blog-header (onOpenedPostMenu)='setIsOverlayHidden($event)' class='header-wrapper'></blog-header>
+			<blog-header
+				(onOpenedPostMenu)='setIsOverlayHidden($event)'
+				(onLogin)='setCredentials($event)'
+				class='header-wrapper'
+			></blog-header>
 			<posts
 				[posts]='posts'
+				[credentials]='credentials'
 				(onPostDeleted)='getPosts()'
-				class='posts-wrapper'></posts>
+				class='posts-wrapper'
+			></posts>
 		</main>
 	`,
 	providers: [PostsService]
 })
 export class AppComponent implements OnInit {
 
-	isOverlayHidden: boolean;
-	posts;
+	private isOverlayHidden: boolean;
+	private posts;
+	private credentials;
 
 	constructor(private postsService: PostsService) {
 		this.isOverlayHidden = true;
@@ -42,6 +50,10 @@ export class AppComponent implements OnInit {
 
 	ngOnInit() {
 		this.getPosts();
+	}
+
+	setCredentials(credentials) {
+		this.credentials = credentials;
 	}
 
 }

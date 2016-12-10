@@ -23,6 +23,7 @@ const routes = require('./routes');
 app.use(routes.index);
 app.use(routes.post);
 app.use(routes.posts);
+app.use(routes.auth);
 
 app.listen(port, () => {
 	console.log(`Microblog running on port ${port}`);

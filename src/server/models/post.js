@@ -6,8 +6,18 @@ const postSchema = new mongoose.Schema({
 		required: true
 	},
 	author: {
-		type: String,
-		required: true
+		sub: {
+			type: String,
+			required: true
+		},
+		name: {
+			type: String,
+			required: true
+		},
+		picture: {
+			type: String,
+			required: true
+		}
 	},
 	body: {
 		type: String,
@@ -17,10 +27,7 @@ const postSchema = new mongoose.Schema({
 		type: Date,
 		required: true
 	},
-	image: {
-		data: Buffer,
-		contentType: String
-	}
+	image: String
 });
 
 const Post = mongoose.model('Post', postSchema);

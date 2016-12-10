@@ -1,13 +1,12 @@
-import {Component, Output, EventEmitter, Directive} from '@angular/core';
+import {Component, Output, EventEmitter, Input} from '@angular/core';
 import {PostAddService} from './post.add.service';
-import {FileUploader} from 'ng2-file-upload/ng2-file-upload';
 
 @Component({
 	selector: 'post-add',
 	template: `
-		<section class='post-add-wrapper'>
+		<section *ngIf='credentials' class='post-add-wrapper'>
 			<header class='post-add-header'>
-		  		<p class='post-add-as'>Posting as {{name}}</p>
+		  		<p class='post-add-as'>Posting as {{credentials.user.name}}</p>
 		  	</header>
 		  	<section class='post-add-fields'>
 		  		<input [(ngModel)]='postTitle' class='post-add-title' type='text' placeholder='Title'>
@@ -18,7 +17,7 @@ import {FileUploader} from 'ng2-file-upload/ng2-file-upload';
 		    	<p class='post-add-char-count'>{{characterCount}}/160</p>
 		    	<div class='fileUpload post-add-btn post-add-btn-img'>
 				    <i class='fa fa-upload' aria-hidden='true' accept='image/gif, image/jpeg, image/png'></i>
-				    <input id='post-add-upload' type='file' name='photo' class='post-add-upload' ng2FileSelect [uploader]='uploader' />
+				    <input id='post-add-upload' type='file' name='photo' class='post-add-upload' />
 				</div>
     			<button class='post-add-btn post-add-btn-post' (click)='addPost()'>Post</button>
     		</footer>
@@ -30,17 +29,13 @@ export class PostAddComponent {
 
 	@Output() onClosedPostMenu = new EventEmitter<boolean>();
 	@Output() onPostAdded = new EventEmitter<boolean>();
-	@Directive({ selector: '[ng2FileSelect]' });
+	@Input() credentials;
 
-	name;
 	postTitle: string;
 	postBody: string;
 	characterCount: number;
 
-	public uploader: FileUploader = new FileUploader({url : '/post/add'});
-
 	constructor(private postAddService: PostAddService) {
-		this.name = 'Zack';
 		this.characterCount = 0;
 	}
 
@@ -51,7 +46,14 @@ export class PostAddComponent {
 
 	addPost() {
 		const image = document.getElementById('post-add-upload').files[0];
-		this.postAddService.addPost(this.postTitle, this.postBody, image)
+
+		const postData = {
+			title: this.postTitle,
+			author: this.credentials.user,
+			body: this.postBody
+		};
+
+		this.postAddService.addPost(postData)
 			.subscribe(response => {
 				console.log(response);
 				this.close();
