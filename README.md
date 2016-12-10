@@ -1,7 +1,5 @@
 # microblog {
 
-A demo can be viewed [here](https://github.com/zackharley/microblog).
-
 ## Quickstart
 
 To get started with this project, you must have Node v6.9.1 or higher installed on your computer.
